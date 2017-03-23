@@ -1,0 +1,34 @@
+
+umain：     文件格式 elf32-i386
+
+
+Disassembly of section .text:
+
+00000000 <uentry>:
+   0:	55                   	push   %ebp
+   1:	89 e5                	mov    %esp,%ebp
+   3:	83 ec 14             	sub    $0x14,%esp
+   6:	68 38 00 00 00       	push   $0x38
+   b:	e8 08 00 00 00       	call   18 <printf>
+  10:	83 c4 10             	add    $0x10,%esp
+  13:	c9                   	leave  
+  14:	c3                   	ret    
+  15:	66 90                	xchg   %ax,%ax
+  17:	90                   	nop
+
+00000018 <printf>:
+  18:	55                   	push   %ebp
+  19:	89 e5                	mov    %esp,%ebp
+  1b:	53                   	push   %ebx
+  1c:	8b 4d 08             	mov    0x8(%ebp),%ecx
+  1f:	31 d2                	xor    %edx,%edx
+  21:	8d 76 00             	lea    0x0(%esi),%esi
+  24:	42                   	inc    %edx
+  25:	80 7c 11 ff 00       	cmpb   $0x0,-0x1(%ecx,%edx,1)
+  2a:	75 f8                	jne    24 <printf+0xc>
+  2c:	31 db                	xor    %ebx,%ebx
+  2e:	b8 04 00 00 00       	mov    $0x4,%eax
+  33:	cd 80                	int    $0x80
+  35:	5b                   	pop    %ebx
+  36:	5d                   	pop    %ebp
+  37:	c3                   	ret    
